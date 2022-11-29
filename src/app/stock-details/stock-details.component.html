@@ -1,50 +1,25 @@
-<div class="container h-100">
-  <div class="row h-100">
-    <div class="col-sm-10 col-md-8 col-lg-6 mx-auto d-table h-100">
-      <div class="d-table-cell align-middle">
+<div class="row">
+  <div class="card col-md-3 offset-md-3 offset-md-3">
+    <div class="row">
+      <h3 class="text-center"> Stock Market </h3>
+      <hr />
+      <div class="card-body">
+        <form (ngSubmit)="onsubmit()">
 
-        <div class="card">
-          <div class="card-body">
-            <div class="m-sm-4">
-              <form #editForm="ngForm">
-                <div class="form-group">
-                  <label for="companyName">Company Name</label>
-                  <input type="text" ngModel="{{stock.companyName}}" name="companyName" class="form-control"
-                    id="companyName" aria-describedby="emailHelp" placeholder="Company Name">
-                </div>
-                <input type="hidden" ngModel="{{stock.id}}" name="id" class="form-control" id="id" placeholder="id">
-                <input type="hidden" ngModel="{{stock.tickerSymbol}}" name="tickerSymbol" class="form-control"
-                  id="tickerSymbol" placeholder="Email">
-                <div class="form-group">
-                  <label for="tickerSymbol">Ticker Symbol</label>
-                  <input type="tickerSymbol" ngModel="{{stock.tickerSymbol}}" name="tickerSymbol" class="form-control"
-                    id="tickerSymbol" placeholder="Ticker Symbol">
-                </div>
-                <div class="form-group">
-                  <label for="stocks">Number of Stocks</label>
-                  <input type="number" ngModel="{{stock.stocks}}" name="stocks" class="form-control" id="stocks"
-                    placeholder="Number of Stocks">
-                </div>
-                <div class="form-group">
-                  <label for="price">Price</label>
-                  <input type="number" ngModel="{{stock.price}}" name="price" class="form-control" id="price"
-                    name="price" placeholder="Price">
-                </div>
-                <div class="form-group">
-                  <label for="imageUrl">Image URL</label>
-                  <input type="text" ngModel="{{stock.imageUrl}}" name="imageUrl" class="form-control" id="imageUrl"
-                    placeholder="Image URL">
-                </div>
-                <div class="modal-footer">
-                  <!-- <button type="submit" id="" data-dismiss="modal" class="btn btn-secondary">Close</button> -->
-                  <button (click)="onUpdateStock(editForm.value)" data-dismiss="modal" class="btn btn-primary">Save
-                    changes</button>
-                </div>
-              </form>
-            </div>
+          <div class="form-group">
+            <label> No of Stocks</label>
+            <input type="text" class="form-control" id="stocks" [(ngModel)]="stock.stocks" name="stocks">
           </div>
-        </div>
 
+          <div class="form-group">
+            <label> Stock Price</label>
+            <input type="text" class="form-control" id="price" [(ngModel)]="stock.price" name="price">
+          </div>
+
+          <br />
+          <button class="btn btn-success btn-sm w-100" type="submit">Submit</button>
+
+        </form>
       </div>
     </div>
   </div>

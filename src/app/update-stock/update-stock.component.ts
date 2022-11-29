@@ -16,31 +16,26 @@ export class UpdateStockComponent implements OnInit {
     private stockService: StockService,
     private route: ActivatedRoute,
     private router: Router
-  ) {}
+  ) { }
+
   ngOnInit(): void {
-    throw new Error('Method not implemented.');
+    this.id = this.route.snapshot.params['id'];
+
+    this.stockService.getStockById(this.id).subscribe({
+      next: data => this.stock = data,
+      error: error => console.error(error)
+    });  
   }
 
-  // ngOnInit(): void {
-  //   this.id = this.route.snapshot.params['id'];
-
-  //   this.stockService.getStockById(this.id).subscribe({
-  //     next: (data) => {
-  //       this.stock = data;
-  //     },
-  //     error: (error) => {
-  //       console.log(error);
-  //     }
-  //   });
-  // }
-  onsubmit() {
-    this.stockService.updateStock(this.stock).subscribe({
-      next: data => this.goToStockList(),
-      error: (error) => console.log(error),
+  public onUpdateStock(stock: Stock): void {
+    this.stockService.updateStock(stock).subscribe({
+      next: response => {
+        console.log(response);
+        this.router.navigate(['/stocks']);
+      },
+      error: error => {
+        alert(error.message);
+      }
     });
-  }
-
-  goToStockList() {
-    this.router.navigate(['/stocks']);
   }
 }

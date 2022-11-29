@@ -29,11 +29,11 @@
                     </div>
 
                     <div class="d-flex gap-2 pt-4">
-                        <a (click)="stockDetails(stock.id)" class="btn btn-primary tooltips" data-placement="top"
+                        <a (click)="updateStock(stock.id)" class="btn btn-primary tooltips" data-placement="top"
                             data-original-title="Edit"><i class="fa fa-pencil"></i> </a>
                         <a (click)="deleteStock(stock.id)" class="btn btn-secondary tooltips"
                             data-placement="top" data-original-title="Delete"><i class="fa fa-times"></i></a>
-                        <button (click)="updateStock(stock.id)" type="button" class="btn btn-primary btn-sm w-100"><i
+                        <button (click)="stockDetails(stock.id)" type="button" class="btn btn-primary btn-sm w-100"><i
                                 class="bx me-1"></i>
                             Checkout </button>
                     </div>

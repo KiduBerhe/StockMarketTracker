@@ -10,6 +10,7 @@ import { StockService } from '../stock.service';
 })
 export class StockDetailsComponent implements OnInit {
   
+  id!: number;
   stock: Stock = new Stock();
 
   constructor(
@@ -17,20 +18,30 @@ export class StockDetailsComponent implements OnInit {
     private route: ActivatedRoute,
     private router: Router
   ) { }
-  
-  ngOnInit(): void {
-    throw new Error('Method not implemented.');
-  }
+  // ngOnInit(): void {
+  //   throw new Error('Method not implemented.');
+  // }
 
-  public onUpdateStock(stock: Stock): void {
-    this.stockService.updateStock(stock).subscribe({
-      next: response => {
-        console.log(response);
-        this.router.navigate(['/stocks']);
+  ngOnInit(): void {
+    this.id = this.route.snapshot.params['id'];
+
+    this.stockService.getStockById(this.id).subscribe({
+      next: (data) => {
+        this.stock = data;
       },
-      error: error => {
-        alert(error.message);
+      error: (error) => {
+        console.log(error);
       }
     });
+  }
+  onsubmit() {
+    this.stockService.buyStock(this.stock).subscribe({
+      next: data => this.goToStockList(),
+      error: (error) => console.log(error),
+    });
+  }
+
+  goToStockList() {
+    this.router.navigate(['/stocks']);
   }
 }

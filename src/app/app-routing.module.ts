@@ -9,8 +9,8 @@ const routes: Routes = [
   {path: 'stocks', component: StockListComponent},
   {path: 'create-stock', component: CreateStockComponent},
   {path: '', redirectTo: 'stocks', pathMatch: 'full'},
-  {path: 'update-stock', component: UpdateStockComponent},
-  {path: 'stock-details', component:StockDetailsComponent}
+  {path: 'update-stock/:id', component: UpdateStockComponent},
+  {path: 'stock-details/:id', component:StockDetailsComponent}
 ];
 
 

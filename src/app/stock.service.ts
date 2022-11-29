@@ -23,7 +23,11 @@ export class StockService {
     return this.http.get<Stock>(`${this.baseURL}/${id}`);
   }
 
-  updateStock(stock: Stock): Observable<object>{
+  updateStock(stock: Stock): Observable<Stock>{
+    return this.http.put<Stock>(`${this.baseURL}`, stock);
+  }
+
+  buyStock(stock: Stock): Observable<Object>{
     return this.http.put(`${this.baseURL}`, stock);
   }
 

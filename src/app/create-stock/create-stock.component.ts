@@ -15,10 +15,8 @@ export class CreateStockComponent implements OnInit {
 
   constructor(private stockService: StockService, private router: Router) {}
 
-  ngOnInit(): void {
-    throw new Error('Method not implemented.');
+  ngOnInit(): void { 
   }
-
 
   public onAddStock(addForm: NgForm): void {
     this.stockService.addStock(addForm.value)
@@ -34,6 +32,5 @@ export class CreateStockComponent implements OnInit {
         }
       });
   }
-
 
 }
