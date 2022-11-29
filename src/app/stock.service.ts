@@ -15,7 +15,7 @@ export class StockService {
     return this.http.get<Stock[]>(`${this.baseURL}`);
   }
 
-  createStock(stock: Stock): Observable<object>{
+  addStock(stock: Stock): Observable<object>{
     return this.http.post(`${this.baseURL}`, stock);
   }
 
@@ -23,8 +23,8 @@ export class StockService {
     return this.http.get<Stock>(`${this.baseURL}/${id}`);
   }
 
-  updateStock(id: number, stock: Stock): Observable<object>{
-    return this.http.put(`${this.baseURL}/${id}`, stock);
+  updateStock(stock: Stock): Observable<object>{
+    return this.http.put(`${this.baseURL}`, stock);
   }
 
   deleteStock(id: number): Observable<Object>{

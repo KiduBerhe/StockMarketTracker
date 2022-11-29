@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Stock } from '../stock';
 import { StockService } from '../stock.service';
 
@@ -9,16 +9,28 @@ import { StockService } from '../stock.service';
   styleUrls: ['./stock-details.component.css']
 })
 export class StockDetailsComponent implements OnInit {
-
-  id!: number;
-  stock: Stock | undefined;
   
-  constructor(private route: ActivatedRoute, private stockService: StockService){}
+  stock: Stock = new Stock();
+
+  constructor(
+    private stockService: StockService,
+    private route: ActivatedRoute,
+    private router: Router
+  ) { }
   
   ngOnInit(): void {
-    this.id = this.route.snapshot.params['id'];
+    throw new Error('Method not implemented.');
+  }
 
-    this.stock = new Stock();
-    this.stockService.getStockById(this.id).subscribe(data => this.stock = data);
+  public onUpdateStock(stock: Stock): void {
+    this.stockService.updateStock(stock).subscribe({
+      next: response => {
+        console.log(response);
+        this.router.navigate(['/stocks']);
+      },
+      error: error => {
+        alert(error.message);
+      }
+    });
   }
 }

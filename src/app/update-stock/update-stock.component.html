@@ -1,5 +1,5 @@
 <!-- Edit Modal -->
-<div class="modal fade" id="updateStockModal" tabindex="-1" role="dialog" aria-labelledby="StockEditModalLabel"
+<!-- <div class="modal fade" id="updateStockModal" tabindex="-1" role="dialog" aria-labelledby="StockEditModalLabel"
   aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
@@ -47,5 +47,38 @@
         </div>
         </div>
         </div>
-        </div>
+        </div> -->
 
+        <div class="row">
+          <div class="card col-md-3 offset-md-3 offset-md-3">
+              <div class="row">
+                  <h3 class="text-center"> Stock Market </h3>
+                  <hr />
+                  <div class="card-body">
+                      <form (ngSubmit)="onsubmit()">
+      
+                          <div class="form-group">
+                              <label> No of Stocks</label>
+                              <input type="text" class="form-control" id="stocks" [(ngModel)]="stock.stocks"
+                                  name="stocks">
+                          </div>
+      
+                          <div class="form-group">
+                              <label> Stock Price</label>
+                              <input type="text" class="form-control" id="price" [(ngModel)]="stock.price"
+                                  name="price">
+                          </div>
+
+                          <br />
+                          <button class="btn btn-success btn-sm w-100" type="submit">Submit</button>
+
+
+                            <!-- <button type="button" class="btn btn-primary btn-sm w-100"><i
+                                    class="bx me-1"></i> Submit </button> -->
+                        
+                      </form>
+                  </div>
+              </div>
+          </div>
+      </div>
+      

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Stock } from '../stock';
 import { StockDetailsComponent } from '../stock-details/stock-details.component';
@@ -17,23 +18,22 @@ export class CreateStockComponent implements OnInit {
   ngOnInit(): void {
     throw new Error('Method not implemented.');
   }
-  saveStock() {
-    this.stockService.createStock(this.stock).subscribe({
-      next: (data) => {
-        console.log(data);
-      },
-      error: (error) => {
-        console.log(error);
-      },
-    });
+
+
+  public onAddStock(addForm: NgForm): void {
+    this.stockService.addStock(addForm.value)
+      .subscribe({
+        next: response => {
+          console.log(response);
+          this.router.navigate(['/stocks']);
+          addForm.reset();
+        },
+        error: error => {
+          alert(error.message);
+          addForm.reset();
+        }
+      });
   }
 
-  goToStockList(){
-    this.router.navigate(['/stocks']);
-  }
 
-  onSubmit(){
-    console.log(this.stock);
-    this.saveStock();
-  }
 }

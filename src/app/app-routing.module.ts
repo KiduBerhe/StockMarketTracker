@@ -5,19 +5,17 @@ import { CreateStockComponent } from './create-stock/create-stock.component';
 import { UpdateStockComponent } from './update-stock/update-stock.component';
 import { StockDetailsComponent } from './stock-details/stock-details.component';
 
-import { CommonModule } from '@angular/common';
-
 const routes: Routes = [
-  {path: 'stock', component: StockListComponent},
+  {path: 'stocks', component: StockListComponent},
   {path: 'create-stock', component: CreateStockComponent},
   {path: '', redirectTo: 'stocks', pathMatch: 'full'},
-  {path: 'update-stock/:id', component: UpdateStockComponent},
-  {path: 'stock-details/:id', component:StockDetailsComponent}
+  {path: 'update-stock', component: UpdateStockComponent},
+  {path: 'stock-details', component:StockDetailsComponent}
 ];
 
 
 @NgModule({
-  declarations: [],
+  // declarations: [],
   imports: [
     RouterModule.forRoot(routes)
     //CommonModule
