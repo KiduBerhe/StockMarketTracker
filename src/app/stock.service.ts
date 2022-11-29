@@ -27,8 +27,8 @@ export class StockService {
     return this.http.put<Stock>(`${this.baseURL}`, stock);
   }
 
-  buyStock(stock: Stock): Observable<Object>{
-    return this.http.put(`${this.baseURL}`, stock);
+  buyStock(id: number, stock: Stock): Observable<Object>{
+    return this.http.put(`${this.baseURL}/${id}`, stock);
   }
 
   deleteStock(id: number): Observable<Object>{

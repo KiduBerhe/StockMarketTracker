@@ -12,6 +12,9 @@ import { StockService } from '../stock.service';
 })
 export class CreateStockComponent implements OnInit {
   stock: Stock = new Stock();
+  addPrice!: number;
+  addStocks!: number;
+  marketCap = this.addPrice * this.addStocks;
 
   constructor(private stockService: StockService, private router: Router) {}
 

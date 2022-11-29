@@ -35,7 +35,7 @@ export class StockDetailsComponent implements OnInit {
     });
   }
   onsubmit() {
-    this.stockService.buyStock(this.stock).subscribe({
+    this.stockService.buyStock(this.id, this.stock).subscribe({
       next: data => this.goToStockList(),
       error: (error) => console.log(error),
     });
